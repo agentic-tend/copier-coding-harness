@@ -1,0 +1,20 @@
+# Copier configuration: questionnaire and rendering settings for the coding-harness template.
+
+_subdirectory: template
+
+project_name:
+  type: str
+  help: Project name used in the generated README and LICENSE-adjacent metadata.
+
+description:
+  type: str
+  help: One-sentence project description; becomes the boundary sentence of the generated README.
+
+author:
+  type: str
+  help: Author name for the MIT license.
+
+role_bindings:
+  type: str
+  default: ""
+  help: 'Optional provider bindings for the workflow roles, e.g. "Exploration agent → ChatGPT; Architecture reviewer → Claude; Execution agent → Codex". Leave empty to fill in later.'

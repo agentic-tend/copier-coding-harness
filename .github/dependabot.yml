@@ -1,0 +1,7 @@
+# Dependabot for the template repository's own dependencies; generated projects manage their own.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

@@ -1,0 +1,105 @@
+"""Structural tests: the template renders and the generated harness honors its own contracts."""
+
+from pathlib import Path
+
+import copier
+import pytest
+import yaml
+
+TEMPLATE_ROOT = str(Path(__file__).resolve().parents[1])
+
+ANSWERS = {
+    "project_name": "DemoProject",
+    "description": "DemoProject is a demonstration project for the coding-harness template.",
+    "author": "Demo Author",
+}
+
+EXPECTED_FILES = {
+    "README.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "LICENSE",
+    ".gitignore",
+    ".copier-answers.yml",
+    "decisions/README.md",
+    "decisions/development.md",
+    "decisions/documentation-style.md",
+    "decisions/testing-policy.md",
+    "docs/README.md",
+}
+
+
+def generate(tmp_path, **extra):
+    dst = tmp_path / "generated"
+    copier.run_copy(
+        TEMPLATE_ROOT,
+        dst,
+        data={**ANSWERS, **extra},
+        defaults=True,
+        vcs_ref="HEAD",
+        unsafe=False,
+    )
+    return dst
+
+
+def generated_files(dst):
+    return {str(p.relative_to(dst)) for p in dst.rglob("*") if p.is_file() and ".git" not in p.parts}
+
+
+def test_exact_file_set(tmp_path):
+    dst = generate(tmp_path)
+    assert generated_files(dst) == EXPECTED_FILES
+
+
+def test_no_unrendered_jinja(tmp_path):
+    dst = generate(tmp_path)
+    for rel in EXPECTED_FILES:
+        text = (dst / rel).read_text()
+        assert "{{" not in text and "{%" not in text, f"unrendered Jinja in {rel}"
+
+
+def first_content_line(text):
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped and not stripped.startswith("#"):
+            return stripped
+    return ""
+
+
+def test_markdown_boundary_sentence_and_budget(tmp_path):
+    dst = generate(tmp_path)
+    for rel in EXPECTED_FILES:
+        if not rel.endswith(".md") or rel == "CLAUDE.md":
+            continue
+        text = (dst / rel).read_text()
+        first = first_content_line(text)
+        assert first.endswith("."), f"{rel} does not open with a boundary sentence: {first!r}"
+        assert len(text.splitlines()) < 100, f"{rel} exceeds the 100-line documentation budget"
+
+
+def test_answers_round_trip(tmp_path):
+    dst = generate(tmp_path)
+    answers = yaml.safe_load((dst / ".copier-answers.yml").read_text())
+    for key, value in ANSWERS.items():
+        assert answers[key] == value
+
+
+def test_substitutions(tmp_path):
+    dst = generate(tmp_path)
+    assert "# DemoProject" in (dst / "README.md").read_text()
+    assert ANSWERS["description"] in (dst / "README.md").read_text()
+    assert "Copyright (c) Demo Author" in (dst / "LICENSE").read_text()
+
+
+@pytest.mark.parametrize(
+    "bindings,expected",
+    [
+        ("", "Not yet bound"),
+        ("Exploration agent → ChatGPT; Architecture reviewer → Claude; Execution agent → Codex",
+         "Exploration agent → ChatGPT"),
+    ],
+)
+def test_role_bindings_branches(tmp_path, bindings, expected):
+    dst = generate(tmp_path, role_bindings=bindings)
+    text = (dst / "decisions/development.md").read_text()
+    assert expected in text

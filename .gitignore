@@ -1,0 +1,5 @@
+.DS_Store
+.claude
+notes_local/
+__pycache__/
+.pytest_cache/
