@@ -6,7 +6,7 @@ This file is the executable contract boundary for local coding agents: keep only
 
 When instructions conflict, follow this priority: user prompt > AGENTS.md > local code comments > repository docs, and report back the mismatch.
 
-### Project governance
+## Project governance
 
 Read [development.md](decisions/development.md) before making workflow-level changes.
 

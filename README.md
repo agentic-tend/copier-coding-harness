@@ -38,7 +38,7 @@ new-project/
 
 ## Develop the template
 
-Generated files live under `template/`; only `.jinja`-suffixed files are rendered. Validate with:
+Generated files live under `template/`; `.jinja` files are rendered, and other files are copied verbatim. Validate with:
 
 ```bash
 uv run --with copier --with pytest --with pyyaml -- pytest tests/
