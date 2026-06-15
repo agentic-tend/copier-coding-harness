@@ -17,5 +17,10 @@ author:
 
 role_bindings:
   type: str
-  default: ""
-  help: 'Optional provider bindings for the workflow roles, e.g. "Exploration agent → ChatGPT; Architecture reviewer → Claude; Execution agent → Codex". Leave empty to fill in later.'
+  default: "Exploration agent → ChatGPT; Architecture reviewer → Claude; Execution agent → Codex"
+  help: 'Provider bindings for the workflow roles. Pre-filled with a common example; edit to match your tools, or clear it to leave the roles unbound.'
+
+include_notes_local:
+  type: bool
+  default: true
+  help: Generate a private, gitignored notes_local/ directory (with a committed README placeholder). Disable to omit it.

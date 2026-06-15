@@ -6,19 +6,16 @@ This repository is a [Copier](https://copier.readthedocs.io/) template that gene
 
 ## Standalone generation
 
-Generate a fresh project from the harness:
+Generate a fresh project from the harness (swap `gh:…` for a local path to render from a clone):
 
 ```bash
 uvx copier copy gh:swanchristmas/copier-coding-harness path/to/new-project
 ```
 
-Or from a local clone:
+Copier asks for `project_name`, `description`, `author`, `role_bindings`, and `include_notes_local`; everything else is fixed.
 
-```bash
-uvx copier copy path/to/copier-coding-harness path/to/new-project
-```
-
-Copier asks for `project_name`, `description`, `author`, and optional `role_bindings`; everything else is fixed.
+> [!NOTE]
+> Copier can't read `git config` (its Jinja is sandboxed), so pass your name explicitly — e.g. `-d author="$(git config user.name)"` — or set it once under `defaults:` in `~/.config/copier/settings.yml`.
 
 ## Overlay on an existing project
 
@@ -34,12 +31,12 @@ uvx copier copy -a .copier-answers.harness.yml gh:swanchristmas/copier-coding-ha
 uvx copier copy -a .copier-answers.harness.yml \
   -d project_name=my-project \
   -d "description=My project does X." \
-  -d author="My Name" \
+  -d author="$(git config user.name)" \
   gh:swanchristmas/copier-coding-harness .
 ```
 
 > [!WARNING]
-> **Overlaying is intrusive.** The harness ships `README.md`, `LICENSE`, `CLAUDE.md`, `AGENTS.md`, and `.gitignore` — files a host project usually already has. Copier prompts to overwrite each conflict, and accepting will clobber your versions. Start from a clean, committed tree, then `git diff` after generation and keep only the harness changes you want.
+> **Overlaying is intrusive.** The harness ships `README.md`, `LICENSE`, `CLAUDE.md`, `AGENTS.md`, and `.gitignore` — files a host usually already has. Copier resolves conflicts per file with a Y/N overwrite (no git-style hunk merge), so start from a clean, committed tree (no `.git`? `git init` first, or accept no safety net), generate without `--overwrite`, then `git diff` and `git checkout -- <paths>` to keep exactly the harness changes you want.
 
 ## Update the harness layer
 
@@ -66,14 +63,15 @@ new-project/
 ├── AGENTS.md            # executable contract for coding agents
 ├── CLAUDE.md            # shim: @AGENTS.md
 ├── LICENSE              # MIT
-├── .gitignore           # notes_local/, .DS_Store, .claude
+├── .gitignore           # .DS_Store, .claude, notes_local contents
 ├── .copier-answers.yml  # enables `copier update`
 ├── decisions/           # durable development-process contracts
 │   ├── README.md
 │   ├── development.md   # four-role workflow loop and change control
 │   ├── documentation-style.md
 │   └── testing-policy.md
-└── docs/README.md       # public-result boundary, empty until results exist
+├── docs/README.md       # public-result boundary, empty until results exist
+└── notes_local/README.md  # private notes placeholder (contents gitignored; omit via include_notes_local)
 ```
 
 ## Develop the template
@@ -84,10 +82,13 @@ Generated files live under `template/`; `.jinja` files are rendered, and other f
 uv run --with copier --with pytest --with pyyaml -- pytest tests/
 ```
 
-## Roadmap
+## [Roadmap](decisions/roadmap.md)
 
-- [x] Init skeleton
-- [x] Test layered details
-- [ ] Tag it
-- [ ] Self-reference
-- [ ] Dogfood existing projects
+Incremental milestones and their status.
+
+## For contributors
+
+- [AGENTS.md](AGENTS.md) is the executable contract for coding agents.
+- [decisions/](decisions/) records durable development-process decisions.
+- [docs/](docs/) presents the public project result.
+- `notes_local/` holds private local notes; it is gitignored and must not define project behavior.
