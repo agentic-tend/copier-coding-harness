@@ -26,6 +26,7 @@ EXPECTED_FILES = {
     "decisions/documentation-style.md",
     "decisions/testing-policy.md",
     "docs/README.md",
+    "notes_local/README.md",
 }
 
 
@@ -55,6 +56,16 @@ def generated_files(dst):
 def test_exact_file_set(tmp_path):
     dst = generate(tmp_path)
     assert generated_files(dst) == EXPECTED_FILES
+
+
+def test_notes_local_excluded(tmp_path):
+    dst = generate(tmp_path, include_notes_local=False)
+    files = generated_files(dst)
+    assert not any(f.startswith("notes_local") for f in files)
+    assert files == EXPECTED_FILES - {"notes_local/README.md"}
+    # When excluded, notes_local is not mentioned anywhere either.
+    assert "notes_local" not in (dst / "README.md").read_text()
+    assert "notes_local" not in (dst / ".gitignore").read_text()
 
 
 def test_no_unrendered_jinja(tmp_path):
