@@ -37,8 +37,12 @@ CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) runs only the pytest c
   `template/README.md.jinja` → `README.md`). All other files are copied verbatim.
 - The questionnaire variables are `project_name`, `description`, `author`, and optional
   `role_bindings`. They substitute into `README.md.jinja`, `LICENSE.jinja`,
-  `.copier-answers.yml.jinja`, and `decisions/development.md.jinja` (where `role_bindings` drives a
-  conditional block). `description` has a validator requiring a sentence ending in a period.
+  `{{ _copier_conf.answers_file }}.jinja`, and `decisions/development.md.jinja` (where
+  `role_bindings` drives a conditional block). `description` has a validator requiring a sentence
+  ending in a period.
+- The answers filename is itself templated (`{{ _copier_conf.answers_file }}.jinja`), so a caller
+  can pick a layer-specific answers file via `-a` (e.g. `.copier-answers.harness.yml`) to overlay
+  the harness onto a host project; with no flag it renders the default `.copier-answers.yml`.
 
 ## Tests are the contract
 

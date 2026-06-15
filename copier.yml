@@ -9,6 +9,7 @@ project_name:
 description:
   type: str
   help: One-sentence project description; becomes the boundary sentence of the generated README.
+  validator: "{% if not description.endswith('.') %}Use a complete sentence ending with a period.{% endif %}"
 
 author:
   type: str

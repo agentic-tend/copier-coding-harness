@@ -29,8 +29,9 @@ EXPECTED_FILES = {
 }
 
 
-def generate(tmp_path, **extra):
+def generate(tmp_path, answers_file=None, **extra):
     dst = tmp_path / "generated"
+    options = {"answers_file": answers_file} if answers_file is not None else {}
     copier.run_copy(
         TEMPLATE_ROOT,
         dst,
@@ -38,12 +39,17 @@ def generate(tmp_path, **extra):
         defaults=True,
         vcs_ref="HEAD",
         unsafe=False,
+        **options,
     )
     return dst
 
 
 def generated_files(dst):
-    return {str(p.relative_to(dst)) for p in dst.rglob("*") if p.is_file() and ".git" not in p.parts}
+    return {
+        str(p.relative_to(dst))
+        for p in dst.rglob("*")
+        if p.is_file() and ".git" not in p.parts
+    }
 
 
 def test_exact_file_set(tmp_path):
@@ -69,12 +75,17 @@ def first_content_line(text):
 def test_markdown_boundary_sentence_and_budget(tmp_path):
     dst = generate(tmp_path)
     for rel in EXPECTED_FILES:
+        # CLAUDE.md has `@AGENT.md` at first line
         if not rel.endswith(".md") or rel == "CLAUDE.md":
             continue
         text = (dst / rel).read_text()
         first = first_content_line(text)
-        assert first.endswith("."), f"{rel} does not open with a boundary sentence: {first!r}"
-        assert len(text.splitlines()) < 100, f"{rel} exceeds the 100-line documentation budget"
+        assert first.endswith("."), (
+            f"{rel} does not open with a boundary sentence: {first!r}"
+        )
+        assert len(text.splitlines()) < 100, (
+            f"{rel} exceeds the 100-line documentation budget"
+        )
 
 
 def test_answers_round_trip(tmp_path):
@@ -82,6 +93,15 @@ def test_answers_round_trip(tmp_path):
     answers = yaml.safe_load((dst / ".copier-answers.yml").read_text())
     for key, value in ANSWERS.items():
         assert answers[key] == value
+
+
+def test_overlay_answers_file(tmp_path):
+    dst = generate(tmp_path, answers_file=".copier-answers.harness.yml")
+    files = generated_files(dst)
+    assert ".copier-answers.harness.yml" in files
+    assert ".copier-answers.yml" not in files
+    answers = yaml.safe_load((dst / ".copier-answers.harness.yml").read_text())
+    assert answers["project_name"] == ANSWERS["project_name"]
 
 
 def test_substitutions(tmp_path):
@@ -95,8 +115,10 @@ def test_substitutions(tmp_path):
     "bindings,expected",
     [
         ("", "Not yet bound"),
-        ("Exploration agent → ChatGPT; Architecture reviewer → Claude; Execution agent → Codex",
-         "Exploration agent → ChatGPT"),
+        (
+            "Exploration agent → ChatGPT; Architecture reviewer → Claude; Execution agent → Codex",
+            "Exploration agent → ChatGPT",
+        ),
     ],
 )
 def test_role_bindings_branches(tmp_path, bindings, expected):
