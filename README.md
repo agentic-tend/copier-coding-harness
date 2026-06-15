@@ -91,3 +91,10 @@ uv run --with copier --with pytest --with pyyaml -- pytest tests/
 - [ ] Tag it
 - [ ] Self-reference
 - [ ] Dogfood existing projects
+
+## For contributors
+
+- [AGENTS.md](AGENTS.md) is the executable contract for coding agents.
+- [decisions/](decisions/) records durable development-process decisions.
+- [docs/](docs/) presents the public project result.
+- `notes_local/` holds private local notes; it is gitignored and must not define project behavior.
