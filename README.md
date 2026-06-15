@@ -91,4 +91,4 @@ Incremental milestones and their status.
 - [AGENTS.md](AGENTS.md) is the executable contract for coding agents.
 - [decisions/](decisions/) records durable development-process decisions.
 - [docs/](docs/) presents the public project result.
-- `notes_local/` holds private local notes; it is gitignored and must not define project behavior.
+- [notes_local/](notes_local/) holds private local notes; its contents are gitignored and must not define project behavior.
