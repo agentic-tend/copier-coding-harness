@@ -22,7 +22,6 @@ This file tracks milestones for proving the harness as a reusable agent-governan
   - [ ] Julia
   - [ ] Python/PyTorch
   - [ ] Obsidian
-- [x] Add a wrapper script that refuses overlay into a dirty git tree
 - [ ] CI drift-check that self-reference stays in sync with `template/`
 - [ ] Add rendered-fixture tests for standalone and overlay generation
 

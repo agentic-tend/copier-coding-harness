@@ -14,7 +14,7 @@ Do not modify project scope, dependencies, or public contracts without explicit 
 
 - Public project documentation belongs in [docs/](docs/).
 - Development-process decisions belong in [decisions/](decisions/).
-- Private local notes belong in [notes_local/](notes_local/) and should not be committed.
+- Private local notes belong in `notes_local/` and should not be committed.
 
 ## Contract-first workflow
 
@@ -77,5 +77,7 @@ After completing a task, report:
 - what was not validated and why;
 - any remaining blocker;
 - a suggested commit message.
+
+Suggested commit messages, and any commit made when explicitly asked, use an `Assisted-By:` trailer naming the executing agent (for example `Assisted-By: <agent> <email>`), never `Co-Authored-By:`.
 
 The developer reviews the diff and performs the commit manually.

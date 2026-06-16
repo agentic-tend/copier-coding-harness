@@ -2,7 +2,7 @@
 
 Personal inbox for working notes and drafts before they are condensed into committed docs. Gitignored.
 
-Only this README is tracked; everything else here is private and must not define project behavior.
+Nothing here is committed — the whole directory, including this README, is gitignored — and its contents must not define project behavior.
 
 ## See also
 

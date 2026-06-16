@@ -16,4 +16,4 @@ If the rationale only matters at one location, it belongs as a `NOTE` comment th
 
 - [AGENTS.md](../AGENTS.md) gives concise execution rules to coding agents.
 - [docs/](../docs/) presents the project result.
-- [notes_local/](../notes_local/) stores private local notes that should not define project behavior.
+- `notes_local/` stores private local notes that should not define project behavior.
