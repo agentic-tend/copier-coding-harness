@@ -4,16 +4,12 @@ _subdirectory: template
 
 project_name:
   type: str
-  help: Project name used in the generated README and LICENSE-adjacent metadata.
+  help: Project name used in the generated README.
 
 description:
   type: str
   help: One-sentence project description; becomes the boundary sentence of the generated README.
   validator: "{% if not description.endswith('.') %}Use a complete sentence ending with a period.{% endif %}"
-
-author:
-  type: str
-  help: Author name for the MIT license.
 
 role_bindings:
   type: str

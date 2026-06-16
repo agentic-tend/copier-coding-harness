@@ -1,6 +1,5 @@
 .DS_Store
 .claude
-notes_local/*
-!notes_local/README.md
+notes_local/
 __pycache__/
 .pytest_cache/

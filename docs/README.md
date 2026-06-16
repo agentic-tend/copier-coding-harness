@@ -1,8 +1,11 @@
 # Documentation
 
-This directory presents the public project result to readers outside the development loop.
+This directory presents the public project result and the harness's own development-facing references.
 
-It is empty until the project has results to present; tooling for building documentation arrives with the project's language layer.
+## Map of Contents
+
+- [roadmap.md](roadmap.md): milestones for proving the harness as a reusable agent-governance layer.
+- [user-level-agent-config.md](user-level-agent-config.md): how the generated repository-level contract relates to personal, user-level agent defaults.
 
 ## See also
 
