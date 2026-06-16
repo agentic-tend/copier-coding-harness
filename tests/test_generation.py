@@ -11,14 +11,12 @@ TEMPLATE_ROOT = str(Path(__file__).resolve().parents[1])
 ANSWERS = {
     "project_name": "DemoProject",
     "description": "DemoProject is a demonstration project for the coding-harness template.",
-    "author": "Demo Author",
 }
 
 EXPECTED_FILES = {
     "README.md",
     "AGENTS.md",
     "CLAUDE.md",
-    "LICENSE",
     ".gitignore",
     ".copier-answers.yml",
     "decisions/README.md",
@@ -63,9 +61,11 @@ def test_notes_local_excluded(tmp_path):
     files = generated_files(dst)
     assert not any(f.startswith("notes_local") for f in files)
     assert files == EXPECTED_FILES - {"notes_local/README.md"}
-    # When excluded, notes_local is not mentioned anywhere either.
+    # When excluded, notes_local is not mentioned in the topology-reference files either.
     assert "notes_local" not in (dst / "README.md").read_text()
     assert "notes_local" not in (dst / ".gitignore").read_text()
+    assert "notes_local" not in (dst / "AGENTS.md").read_text()
+    assert "notes_local" not in (dst / "decisions/README.md").read_text()
 
 
 def test_no_unrendered_jinja(tmp_path):
@@ -119,7 +119,6 @@ def test_substitutions(tmp_path):
     dst = generate(tmp_path)
     assert "# DemoProject" in (dst / "README.md").read_text()
     assert ANSWERS["description"] in (dst / "README.md").read_text()
-    assert "Copyright (c) Demo Author" in (dst / "LICENSE").read_text()
 
 
 @pytest.mark.parametrize(

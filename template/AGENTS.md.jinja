@@ -13,8 +13,8 @@ Read [development.md](decisions/development.md) before making workflow-level cha
 Do not modify project scope, dependencies, or public contracts without explicit maintainer approval.
 
 - Public project documentation belongs in [docs/](docs/).
-- Development-process decisions belong in [decisions/](decisions/).
-- Private local notes belong in [notes_local/](notes_local/) and should not be committed.
+- Development-process decisions belong in [decisions/](decisions/).{% if include_notes_local %}
+- Private local notes belong in [notes_local/](notes_local/) and should not be committed.{% endif %}
 
 ## Contract-first workflow
 
