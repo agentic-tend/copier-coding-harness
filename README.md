@@ -92,3 +92,6 @@ Incremental milestones and their status.
 - [decisions/](decisions/) records durable development-process decisions.
 - [docs/](docs/) presents the public project result.
 - [notes_local/](notes_local/) holds private local notes; its contents are gitignored and must not define project behavior.
+
+> [!NOTE]
+> Advanced users can keep personal defaults in user-level agent config; see [user-level agent config](docs/user-level-agent-config.md).
