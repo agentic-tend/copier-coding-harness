@@ -82,7 +82,7 @@ Generated files live under `template/`; `.jinja` files are rendered, and other f
 uv run --with copier --with pytest --with pyyaml -- pytest tests/
 ```
 
-## [Roadmap](decisions/roadmap.md)
+## [Roadmap](docs/roadmap.md)
 
 Incremental milestones and their status.
 
