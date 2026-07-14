@@ -9,11 +9,12 @@ If the rationale only matters at one location, it belongs as a `NOTE` comment th
 ## Map of Contents
 
 - [development.md](development.md): AI-assisted development roles and workflow change control.
+- [delivery.md](delivery.md): completion, validation, reporting, and repository-action policy.
 - [documentation-style.md](documentation-style.md): documentation style choices including markdown conventions.
+- [implementation-policy.md](implementation-policy.md): topology evolution, complexity boundaries, and redesign evidence.
 - [testing-policy.md](testing-policy.md): what tests must and must not specify about public boundaries.
 
 ## See also
 
 - [AGENTS.md](../AGENTS.md) gives concise execution rules to coding agents.
 - [docs/](../docs/) presents the project result.
-- `notes_local/` stores private local notes that should not define project behavior.

@@ -76,11 +76,15 @@ Files under `template/` are copied verbatim unless their names end in `.jinja`, 
 uv run --with copier --with pytest --with pyyaml -- pytest tests/
 ```
 
-## Project map
+## Project Map
 
 - [Roadmap](docs/roadmap.md) tracks incremental milestones and their status.
 - [AGENTS.md](AGENTS.md) is the executable contract for coding agents.
-- [decisions/](decisions/) records durable development-process decisions.
+- The [development workflow](decisions/development.md) defines roles, stages, and uncertainty routing.
+- The [delivery policy](decisions/delivery.md) defines completion, validation, and repository-action boundaries.
+- The [implementation policy](decisions/implementation-policy.md) defines how topology may evolve without unnecessary expansion.
+- The [testing policy](decisions/testing-policy.md) defines public acceptance evidence.
+- The [documentation style](decisions/documentation-style.md) defines how the repository keeps its source of truth readable.
 - [docs/](docs/) presents the public project result.
 - `notes_local/` holds private local notes; it is gitignored and must not define project behavior.
 - [User-level agent config](docs/user-level-agent-config.md) shows where advanced users can keep personal defaults.
