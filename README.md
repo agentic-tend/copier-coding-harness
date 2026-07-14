@@ -16,16 +16,9 @@ This repository is a [Copier](https://copier.readthedocs.io/) template that gene
 
 **This template owns only the harness layer.** It ships no language tooling; when overlaid onto an existing project you review and resolve the resulting diff yourself.
 
-## Prerequisite: uv
-
-[`uv`](https://docs.astral.sh/uv/) is the modern Python package and project manager written in Rust. Here, its `uvx` command runs Copier in an isolated temporary environment, so Copier need not be installed globally. Install `uv` with the commands:
-
-```bash
-# macOS and Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
-# Windows PowerShell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
+> **Prerequisite: `uv`**
+>
+> [`uv`](https://docs.astral.sh/uv/) is a Python package and project manager written in Rust. Its `uvx` command runs Copier in an isolated environment, so Copier does not need to be installed globally.
 
 ## Standalone generation
 
@@ -91,8 +84,6 @@ uv run --with copier --with pytest --with pyyaml -- pytest tests/
 - [docs/](docs/) presents the public project result.
 - `notes_local/` holds private local notes; it is gitignored and must not define project behavior.
 - [User-level agent config](docs/user-level-agent-config.md) shows where advanced users can keep personal defaults.
-
-## References and suggested reading
 
 [^superpowers]: obra, [*Superpowers*](https://github.com/obra/superpowers): composable, enforceable workflows for agentic software development.
 [^shinaoka]: Hiroshi Shinaoka, [*Agentic AI Coding × Rust*](https://shinaoka.github.io/docs/agentic-ai-coding-rust): growing computational-physics code through mechanical verification and an evolving source of truth.
