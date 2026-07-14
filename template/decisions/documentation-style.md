@@ -10,23 +10,6 @@ This file defines the conventions for all natural-language documentation in this
 - Content belongs in a file only when that file's boundary explains why it belongs there.
 - Delete prose that changes no decision, behavior, or reader action.
 
-## Authoring Workflow
-
-- Create headings before prose.
-- Prefer pseudo-code to prose in planning when it clarifies language-independent design before implementation.
-
-## Budget and Formatting
-
-Markdown files should stay under 100 lines. If a file grows beyond that, apply:
-
-1. pruning — delete stale, repeated, or non-actionable text;
-2. refactor — split durable subtopics into linked files;
-3. compress — shorten language without weakening the contract.
-
-- Do not manually reflow code only for visual alignment.
-- Do not hard-wrap Markdown, comments, git commit messages, or docstrings merely to satisfy a visual line length.
-- For prose, prefer semantic line breaks: one sentence or one logical clause per line when helpful.
-
 ## Markdown file references
 
 - Use Markdown links, `[name](path)`, for repository files that function as documentation nodes.

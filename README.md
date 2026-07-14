@@ -2,30 +2,7 @@
 
 This repository is a [Copier](https://copier.readthedocs.io/) template that generates a language-independent, contract-first AI coding harness: an `AGENTS.md` agent contract, a `decisions/` directory of durable workflow contracts, a `docs/` boundary, and a .gitignored `notes_local/` private-notes convention.
 
-<details>
-<summary><strong>Why this harness?</strong></summary>
-
-- **Contract before code.** Establish a reviewable source of truth before implementation.
-  - [**Clarify requirements.**](decisions/development.md): Turn uncertain goals and domain knowledge into a design before execution. Use dialogue—such as Superpowers' brainstorming workflow[^superpowers].
-  - [**Test before implementation.**](decisions/testing-policy.md): Verifiability over readability[^shinaoka] moves trust from line-by-line reading to tests and external oracles; readable intent remains in the contract.
-  - **Make the ontology explicit.** Name the domain entities, relationships, responsibilities, and reasons before implementation mechanics. ("Why" constrains future "how"; "how" alone only describes today's code.)
-- **Give the agent a map, not the whole repository.** Self-describing files and linked maps of content keep concerns decoupled, help humans navigate, and spend limited context tokens only on the contracts and decisions relevant to the current task.
-- **Improve the production line.** Agents necessitate a new craftsmanship: review and improve the production line, not only each product. Generalize recurring failures into repository-resident contracts, tests, decisions, or procedures so the next run is constrained by what the project has learned.[^shinaoka][^sustainable-automation]
-
-</details>
-
 **This template owns only the harness layer.** It ships no language tooling; when overlaid onto an existing project you review and resolve the resulting diff yourself.
-
-## Prerequisite: uv
-
-[`uv`](https://docs.astral.sh/uv/) is the modern Python package and project manager written in Rust. Here, its `uvx` command runs Copier in an isolated temporary environment, so Copier need not be installed globally. Install `uv` with the commands:
-
-```bash
-# macOS and Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
-# Windows PowerShell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
 
 ## Standalone generation
 
@@ -66,34 +43,51 @@ Pull a newer harness version independently of the host's own templates:
 uvx copier update -a .copier-answers.harness.yml
 ```
 
-### Why a separate answers file
+### Why a separate harness answers file
 
-A host project generated from another template already owns `.copier-answers.yml`; the `-a` flag stores this harness's answers in `.copier-answers.harness.yml`, keeping both template layers independently updateable, while standalone generation without `-a` still uses the default file.
+A host project generated from a language or native Copier template already owns `.copier-answers.yml`. Writing the harness's answers to a dedicated `.copier-answers.harness.yml` keeps the two layers from colliding, so each can be applied, re-answered, and updated with `copier update` on its own. The answers filename is templated as `{{ _copier_conf.answers_file }}.jinja`, so the `-a` flag chooses the layer; standalone generation with no flag still produces the default `.copier-answers.yml`.
 
 | Answers file | Owns | Written by |
 | --- | --- | --- |
 | `.copier-answers.yml` | the host project's own template | standalone generation, or the host's native template |
 | `.copier-answers.harness.yml` | this harness layer | `copier copy`/`update -a .copier-answers.harness.yml` |
 
+## Generated topology
+
+```
+new-project/
+├── README.md            # project boundary sentence and contributor pointers
+├── AGENTS.md            # executable contract for coding agents
+├── CLAUDE.md            # shim: @AGENTS.md
+├── .gitignore           # .DS_Store, .claude, notes_local/
+├── .copier-answers.yml  # enables `copier update`
+├── decisions/           # durable development-process contracts
+│   ├── README.md
+│   ├── development.md   # four-role workflow loop and change control
+│   ├── documentation-style.md
+│   └── testing-policy.md
+├── docs/README.md       # public-result boundary, empty until results exist
+└── notes_local/        # private notes placeholder; omit via include_notes_local
+```
+
 ## Develop the template
 
-Files under `template/` are copied verbatim unless their names end in `.jinja`, in which case Copier renders them. Validate with:
+Generated files live under `template/`; `.jinja` files are rendered, and other files are copied verbatim. Validate with:
 
 ```bash
 uv run --with copier --with pytest --with pyyaml -- pytest tests/
 ```
 
-## Project map
+## [Roadmap](docs/roadmap.md)
 
-- [Roadmap](docs/roadmap.md) tracks incremental milestones and their status.
+Incremental milestones and their status.
+
+## For contributors
+
 - [AGENTS.md](AGENTS.md) is the executable contract for coding agents.
 - [decisions/](decisions/) records durable development-process decisions.
 - [docs/](docs/) presents the public project result.
 - `notes_local/` holds private local notes; it is gitignored and must not define project behavior.
-- [User-level agent config](docs/user-level-agent-config.md) shows where advanced users can keep personal defaults.
 
-## References and suggested reading
-
-[^superpowers]: obra, [*Superpowers*](https://github.com/obra/superpowers): composable, enforceable workflows for agentic software development.
-[^shinaoka]: Hiroshi Shinaoka, [*Agentic AI Coding × Rust*](https://shinaoka.github.io/docs/agentic-ai-coding-rust): growing computational-physics code through mechanical verification and an evolving source of truth.
-[^sustainable-automation]: Quantum Bay, [*Sustainable Automation: Programming the Programmer*](https://www.jinguo-group.science/sustainable-automation/): persistent instructions and reusable skills for human–AI collaboration across sessions.
+> [!NOTE]
+> Advanced users can keep personal defaults in user-level agent config; see [user-level agent config](docs/user-level-agent-config.md).

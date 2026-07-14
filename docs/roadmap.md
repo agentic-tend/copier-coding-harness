@@ -19,9 +19,9 @@ This file tracks milestones for proving the harness as a reusable agent-governan
 ## Near-term reliability
 
 - [ ] Dogfood existing projects
-  - [x] Julia
-  - [x] Python/PyTorch
-  - [ ] Rust
+  - [ ] Julia
+  - [ ] Python/PyTorch
+  - [ ] Obsidian
 - [ ] CI drift-check that self-reference stays in sync with `template/`
 - [ ] Add rendered-fixture tests for standalone and overlay generation
 
