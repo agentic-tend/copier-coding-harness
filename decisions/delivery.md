@@ -28,4 +28,4 @@ After completing a task, report:
 
 ## Commit Attribution
 
-Suggested commit messages, and any commit made when explicitly requested, use an `Assisted-By:` trailer naming the executing agent (for example `Assisted-By: <agent> <email>`), never `Co-Authored-By:`.
+Suggested commit messages use an `Assisted-By: <agent> <email>` instead of `Co-Authored-By:`.

@@ -18,8 +18,6 @@ Read the relevant durable contract before working in its area:
 
 Do not modify project scope, dependencies, or public contracts without explicit maintainer approval.
 
-
-
 ## Core boundaries
 
 Contract precedes implementation; "why" precedes "how".
