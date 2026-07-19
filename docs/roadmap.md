@@ -15,6 +15,7 @@ This file tracks milestones for proving the harness as a reusable agent-governan
 - [x] Test layered details
 - [x] Tag it
 - [x] Self-reference
+- [x] Add the first repo-level skill as a task workflow without adding it to the base template
 
 ## Near-term reliability
 
@@ -39,6 +40,5 @@ This file tracks milestones for proving the harness as a reusable agent-governan
 
 ## Later
 
-- [ ] Add optional skills as task workflows, not as base harness policy
 - [ ] Add language-dependent skills only behind Copier questions
 - [ ] Reconsider the repository name only if skills become a first-class distribution target

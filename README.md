@@ -6,7 +6,7 @@ This repository is a [Copier](https://copier.readthedocs.io/) template that gene
 <summary><strong>Why this harness?</strong></summary>
 
 - **Contract before code.** Establish a reviewable source of truth before implementation.
-  - [**Clarify requirements.**](decisions/development.md): Turn uncertain goals and domain knowledge into a design before execution. Use dialogue—such as Superpowers' brainstorming workflow[^superpowers].
+  - [**Clarify contracts.**](.agents/skills/clarifying-contracts/SKILL.md): This repository's optional procedure operationalizes the [development workflow](decisions/development.md) by resolving user-owned uncertainty before execution. It distills Superpowers' brainstorming workflow and Matt Pocock's grilling.[^superpowers][^grilling]
   - [**Test before implementation.**](decisions/testing-policy.md): Verifiability over readability[^shinaoka] moves trust from line-by-line reading to tests and external oracles; readable intent remains in the contract.
   - **Make the ontology explicit.** Name the domain entities, relationships, responsibilities, and reasons before implementation mechanics. ("Why" constrains future "how"; "how" alone only describes today's code.)
 - **Give the agent a map, not the whole repository.** Self-describing files and linked maps of content keep concerns decoupled, help humans navigate, and spend limited context tokens only on the contracts and decisions relevant to the current task.
@@ -80,6 +80,7 @@ uv run --with copier --with pytest --with pyyaml -- pytest tests/
 
 - [Roadmap](docs/roadmap.md) tracks incremental milestones and their status.
 - [AGENTS.md](AGENTS.md) is the executable contract for coding agents.
+- The repo-level [Clarifying contracts](.agents/skills/clarifying-contracts/SKILL.md) skill resolves essential ambiguity without entering the generated template.
 - The [development workflow](decisions/development.md) defines roles, stages, and uncertainty routing.
 - The [delivery policy](decisions/delivery.md) defines completion, validation, and repository-action boundaries.
 - The [implementation policy](decisions/implementation-policy.md) defines how topology may evolve without unnecessary expansion.
@@ -90,5 +91,6 @@ uv run --with copier --with pytest --with pyyaml -- pytest tests/
 - [User-level agent config](docs/user-level-agent-config.md) shows where advanced users can keep personal defaults.
 
 [^superpowers]: obra, [*Superpowers*](https://github.com/obra/superpowers): composable, enforceable workflows for agentic software development.
+[^grilling]: Matt Pocock, [*grilling*](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md): one-question-at-a-time clarification of plans and decisions.
 [^shinaoka]: Hiroshi Shinaoka, [*Agentic AI Coding × Rust*](https://shinaoka.github.io/docs/agentic-ai-coding-rust): growing computational-physics code through mechanical verification and an evolving source of truth.
 [^sustainable-automation]: Quantum Bay, [*Sustainable Automation: Programming the Programmer*](https://www.jinguo-group.science/sustainable-automation/): persistent instructions and reusable skills for human–AI collaboration across sessions.
