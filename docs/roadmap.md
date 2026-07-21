@@ -15,7 +15,7 @@ This file tracks milestones for proving the harness as a reusable agent-governan
 - [x] Test layered details
 - [x] Tag it
 - [x] Self-reference
-- [x] Add the first repo-level skill as a task workflow without adding it to the base template
+- [x] Add and dogfood the first repo-level skill, then extract it into the companion skills layer
 
 ## Near-term reliability
 
@@ -34,11 +34,11 @@ This file tracks milestones for proving the harness as a reusable agent-governan
 
 ## Behavioral evidence
 
-- [ ] Add a minimal evaluation policy for agent-harness effectiveness
+- [ ] Add a minimal evaluation policy for the [agentic tooling mechanisms](agentic-tooling.md)
 - [ ] Record one before/after agent task showing reduced scope creep or validation omissions
 - [ ] Add a failure-driven design log linking observed agent failures to contract changes
 
 ## Later
 
 - [ ] Add language-dependent skills only behind Copier questions
-- [ ] Reconsider the repository name only if skills become a first-class distribution target
+- [ ] Evaluate a hooks companion repository only after concrete event and enforcement contracts emerge

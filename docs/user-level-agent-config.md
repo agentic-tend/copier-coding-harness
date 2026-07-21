@@ -10,8 +10,12 @@ Keep personal defaults that should apply across unrelated repositories in user-l
 
 ## Skills
 
-A skill packages a reusable task workflow in one `SKILL.md`; there is no aggregate `SKILLS.md`. Repository skills belong in `.agents/skills/`, while user-level deployments belong in `~/.agents/skills/`.
+A skill packages a reusable task workflow in one `SKILL.md`; there is no aggregate `SKILLS.md`. Repository-specific skills belong in `.agents/skills/`, while reusable user-level skills belong in `~/.agents/skills/`.
 
-The repository's [clarifying-contracts skill](../.agents/skills/clarifying-contracts/SKILL.md) is its canonical, reviewable source. To use it across repositories, link the corresponding user-level directory to this source instead of maintaining an independent copy.
+The companion [skills collection](https://github.com/swanchristmas/skills) owns reusable procedures outside this repository's rules layer. Its meta-level [Clarifying Contracts](https://github.com/swanchristmas/skills/tree/main/clarifying-contracts) skill operationalizes the development workflow by resolving user-owned semantic uncertainty before execution.
 
-Codex may discover the same named skill from both repository and user scopes. Keeping the user-level deployment linked to the canonical source prevents semantic drift even if both entries are visible.
+Keeping reusable skills in the user-level collection gives Codex one canonical deployment across repositories and avoids duplicate repository and user-scope copies.
+
+## See also
+
+- [Agentic tooling](agentic-tooling.md) distinguishes ambient rules from on-demand skills and event-triggered hooks.

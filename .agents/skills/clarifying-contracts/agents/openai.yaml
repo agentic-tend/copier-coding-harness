@@ -1,4 +1,0 @@
-interface:
-  display_name: "Clarifying Contracts"
-  short_description: "Resolve essential ambiguity into exact contracts"
-  default_prompt: "Use $clarifying-contracts to resolve this request into an exact contract before action."

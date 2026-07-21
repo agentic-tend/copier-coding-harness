@@ -7,7 +7,7 @@ This file defines how implementation topology evolves from declared structure in
 Treat structure and behavior as coupled axes:
 
 - Vertical evolution creates skeletons before internal logic so syntactic topology exists before unit semantics fill it.
-- Horizontal evolution follows the “make it work, make it right, make it fast” sequence[^three-m]:
+- Horizontal evolution follows the "make it work, make it right, make it fast" sequence[^three-m]:
   1. write the smallest plain-code implementation that satisfies the contract;
   2. simplify the working code and align its units with the declared topology;
   3. optimize only against explicit performance evidence and a relevant benchmark.
