@@ -19,7 +19,7 @@ The harness supplies structure rather than a fixed catalog of customizations.
 Developers add or remove rules, skills, and hooks according to both the developer's workflow and the system being developed.
 
 This repository currently provides the rules framework and its documented design philosophy.
-The companion [skills collection](https://github.com/swanchristmas/skills) owns reusable on-demand workflows.
+The companion [skills collection](https://github.com/agentic-tend/skills) owns reusable on-demand workflows.
 Hooks are an unshipped extension point that may later justify a separate companion repository; no hook interface or distribution contract is defined yet.
 
 ## Evaluation
