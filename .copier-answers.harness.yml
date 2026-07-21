@@ -1,6 +1,6 @@
 # Copier answers file; changes here are overwritten on `copier update` — modify the template instead.
 _commit: v0.4.1
-_src_path: gh:swanchristmas/copier-coding-harness
+_src_path: gh:agentic-tend/copier-coding-harness
 description: A Copier template that generates a language-independent contract-first
     coding harness.
 include_notes_local: false

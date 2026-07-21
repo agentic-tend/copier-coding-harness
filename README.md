@@ -6,7 +6,7 @@ This repository is a [Copier](https://copier.readthedocs.io/) template that gene
 <summary><strong>Why this harness?</strong></summary>
 
 - **Contract before code.** Establish a reviewable source of truth before implementation.
-  - [**Clarify contracts.**](https://github.com/swanchristmas/skills/tree/main/clarifying-contracts): The companion skills layer operationalizes the [development workflow](decisions/development.md) with a meta-level procedure that resolves user-owned uncertainty before execution.
+  - [**Clarify contracts.**](https://github.com/agentic-tend/skills/tree/main/clarifying-contracts): The companion skills layer operationalizes the [development workflow](decisions/development.md) with a meta-level procedure that resolves user-owned uncertainty before execution.
   - [**Test before implementation.**](decisions/testing-policy.md): Verifiability over readability[^shinaoka] moves trust from line-by-line reading to tests and external oracles; readable intent remains in the contract.
   - **Make the ontology explicit.** Name the domain entities, relationships, responsibilities, and reasons before implementation mechanics. ("Why" constrains future "how"; "how" alone only describes today's code.)
 - **Give the agent a map, not the whole repository.** Self-describing files and linked maps of content keep concerns decoupled, help humans navigate, and spend limited context tokens only on the contracts and decisions relevant to the current task.
@@ -25,7 +25,7 @@ This repository is a [Copier](https://copier.readthedocs.io/) template that gene
 Generate a fresh project from the harness (swap `gh:…` for a local path to render from a clone):
 
 ```bash
-uvx copier copy gh:swanchristmas/copier-coding-harness path/to/new-project
+uvx copier copy gh:agentic-tend/copier-coding-harness path/to/new-project
 ```
 
 Copier asks for `project_name`, `description`, `role_bindings`, and `include_notes_local`; everything else is fixed.
@@ -35,7 +35,7 @@ Copier asks for `project_name`, `description`, `role_bindings`, and `include_not
 The harness can be layered onto a project that already exists, including one generated from another Copier template. Run from the project root and give the harness its own answers file (`.copier-answers.harness.yml`) so it never touches the host's own `.copier-answers.yml`:
 
 ```bash
-uvx copier copy -a .copier-answers.harness.yml gh:swanchristmas/copier-coding-harness .
+uvx copier copy -a .copier-answers.harness.yml gh:agentic-tend/copier-coding-harness .
 ```
 
 `project_name` and `description` have no defaults, so this prompts for them interactively. To run unattended, supply them with `-d` (`description` must end with a period, per the `copier.yml` validator):
@@ -44,7 +44,7 @@ uvx copier copy -a .copier-answers.harness.yml gh:swanchristmas/copier-coding-ha
 uvx copier copy -a .copier-answers.harness.yml \
   -d project_name=my-project \
   -d "description=My project does X." \
-  gh:swanchristmas/copier-coding-harness .
+  gh:agentic-tend/copier-coding-harness .
 ```
 
 > [!WARNING]
@@ -80,7 +80,7 @@ uv run --with copier --with pytest --with pyyaml -- pytest tests/
 
 - [Roadmap](docs/roadmap.md) tracks incremental milestones and their status.
 - [AGENTS.md](AGENTS.md) is the executable contract for coding agents.
-- The companion [skills layer](https://github.com/swanchristmas/skills) packages reusable agent skills outside this repository's rules.
+- The companion [skills layer](https://github.com/agentic-tend/skills) packages reusable agent skills outside this repository's rules.
 - The [development workflow](decisions/development.md) defines roles, stages, and uncertainty routing.
 - The [delivery policy](decisions/delivery.md) defines completion, validation, and repository-action boundaries.
 - The [implementation policy](decisions/implementation-policy.md) defines how topology may evolve without unnecessary expansion.
