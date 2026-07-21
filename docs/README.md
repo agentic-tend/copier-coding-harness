@@ -4,10 +4,10 @@ This directory presents the public project result and the harness's own developm
 
 ## Map of Contents
 
-- [agentic-tooling.md](agentic-tooling.md): how rules, skills, and hooks differ in activation, specialization, and enforcement.
-- [roadmap.md](roadmap.md): milestones for proving the harness as a reusable agent-governance layer.
+- [roadmap.md](roadmap.md): harness-specific milestones for proving the rules layer in real repositories.
 - [user-level-agent-config.md](user-level-agent-config.md): how the generated repository-level contract relates to personal, user-level agent defaults.
 
 ## See also
 
 - [decisions/](../decisions/) records development-process decisions, which do not belong here.
+- The organization-level [agentic tooling model](https://github.com/agentic-tend/.github/blob/main/docs/agentic-tooling.md) owns philosophy and cross-layer boundaries.

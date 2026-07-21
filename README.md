@@ -14,7 +14,7 @@ This repository is a [Copier](https://copier.readthedocs.io/) template that gene
 
 </details>
 
-**This template owns only the harness layer.** It ships no language tooling; when overlaid onto an existing project you review and resolve the resulting diff yourself.
+**This template owns only the [rules layer](https://github.com/agentic-tend/.github/blob/main/docs/agentic-tooling.md).** It ships no language tooling; when overlaid onto an existing project you review and resolve the resulting diff yourself.
 
 > **Prerequisite: `uv`**
 >
@@ -86,7 +86,7 @@ uv run --with copier --with pytest --with pyyaml -- pytest tests/
 - The [implementation policy](decisions/implementation-policy.md) defines how topology may evolve without unnecessary expansion.
 - The [testing policy](decisions/testing-policy.md) defines public acceptance evidence.
 - The [documentation style](decisions/documentation-style.md) defines how the repository keeps its source of truth readable.
-- The [agentic tooling model](docs/agentic-tooling.md) distinguishes rules, skills, and hooks by activation and enforcement.
+- The organization-level [agentic tooling model](https://github.com/agentic-tend/.github/blob/main/docs/agentic-tooling.md) distinguishes rules, skills, and hooks by activation and enforcement.
 - [docs/](docs/) presents the public project result.
 - `notes_local/` holds private local notes; it is gitignored and must not define project behavior.
 - [User-level agent config](docs/user-level-agent-config.md) shows where advanced users can keep personal defaults.
