@@ -18,4 +18,4 @@ Keeping reusable skills in the user-level collection gives Codex one canonical d
 
 ## See also
 
-- [Agentic tooling](agentic-tooling.md) distinguishes ambient rules from on-demand skills and event-triggered hooks.
+- The organization-level [agentic tooling model](https://github.com/agentic-tend/.github/blob/main/docs/agentic-tooling.md) distinguishes ambient rules from on-demand skills and event-triggered hooks.

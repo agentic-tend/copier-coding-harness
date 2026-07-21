@@ -34,11 +34,13 @@ This file tracks milestones for proving the harness as a reusable agent-governan
 
 ## Behavioral evidence
 
-- [ ] Add a minimal evaluation policy for the [agentic tooling mechanisms](agentic-tooling.md)
-- [ ] Record one before/after agent task showing reduced scope creep or validation omissions
-- [ ] Add a failure-driven design log linking observed agent failures to contract changes
+- [ ] Record one before/after agent task showing whether the rendered rules layer reduces scope creep or validation omissions
+- [ ] Add a failure-driven design log linking observed agent failures to harness contract changes
 
 ## Later
 
 - [ ] Add language-dependent skills only behind Copier questions
-- [ ] Evaluate a hooks companion repository only after concrete event and enforcement contracts emerge
+
+## See also
+
+- The [organization roadmap](https://github.com/agentic-tend/.github/blob/main/docs/roadmap.md) owns evaluation policy and extension work spanning multiple layers.
